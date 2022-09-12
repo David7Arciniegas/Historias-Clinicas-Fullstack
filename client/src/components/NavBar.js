@@ -14,7 +14,7 @@ const LoadingScreen = () => {
           </a>
         </li>
         <li>
-          <a className="salir" role="button" href="/#/home">
+          <a className="salir" role="button" href="/#/">
             Salir
           </a>
         </li>
