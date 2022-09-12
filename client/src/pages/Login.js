@@ -7,11 +7,13 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-  //const API_URL = `${process.env.REACT_APP_API_URL}api/v1/users`;
+  const API_URL = `${process.env.REACT_APP_API_URL}api/v1/users`;
 
   const submit = (data) => {
     axios
-      .post(`http://localhost:5000/api/v1/users/login`, data)
+    .post(
+      `${API_URL}/login`, data
+    )
       .then((res) => {
         console.log(res.data.token);
         localStorage.setItem('token', res.data.token);

@@ -42,10 +42,9 @@ class MultiForm extends Component {
     formData.append('requestImg', this.state.filename);
     formData.append('requestImg', this.state.selectedFile);
 
-    //const API_URL = `${process.env.REACT_APP_API_URL}api/v1`;
+    const API_URL = `${process.env.REACT_APP_API_URL}api/v1`;
 
-    axios
-      .post(`http://localhost:5000/api/v1/request`, formData, getConfig())
+    axios.post(`${API_URL}/request`, formData, getConfig() )
       .then((res) => {});
   };
 
