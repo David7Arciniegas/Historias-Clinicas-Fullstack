@@ -22,7 +22,7 @@ function App() {
         { isLoading && <Spinner color="success"/>}
         <Routes>
 
-          <Route path='/Home' element={<Home />} />
+          <Route path='/home' element={<Home />} />
 
           <Route element={<ProtectedRoutes />}>
           <Route path='/' element={<Login/>} />
