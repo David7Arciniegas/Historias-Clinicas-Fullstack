@@ -17,7 +17,7 @@ const Login = () => {
       .then((res) => {
         console.log(res.data.token);
         localStorage.setItem('token', res.data.token);
-        navigate('/');
+        navigate('/Home');
         alert('Bienvenido usuario');
       })
       .catch((error) => {
