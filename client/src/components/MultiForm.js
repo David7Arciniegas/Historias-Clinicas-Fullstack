@@ -45,7 +45,9 @@ class MultiForm extends Component {
     const API_URL = `${process.env.REACT_APP_API_URL}api/v1`;
 
     axios.post(`${API_URL}/request`, formData, getConfig() )
-      .then((res) => {});
+      .then((res) => {
+        alert("Su solicitud ha sido enviada, pronto nos pondremos en contacto")
+      });
   };
 
   render() {

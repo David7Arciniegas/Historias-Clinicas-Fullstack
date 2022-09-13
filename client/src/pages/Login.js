@@ -15,7 +15,6 @@ const Login = () => {
       `${API_URL}/login`, data
     )
       .then((res) => {
-        console.log(res.data.token);
         localStorage.setItem('token', res.data.token);
         navigate('/');
         alert('Bienvenido usuario');
