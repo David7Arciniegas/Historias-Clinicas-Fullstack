@@ -1,7 +1,13 @@
 import '../styles/styles.css';
 import Image from '../assets/logo Medicoop.png';
 
+
+
 const LoadingScreen = () => {
+
+  const logout = () => localStorage.setItem("token", "")
+
+
   return (
     <div className="navbar-container">
       <ul>
@@ -14,9 +20,7 @@ const LoadingScreen = () => {
           </a>
         </li>
         <li>
-          <a className="salir" role="button" href="/#/">
-            Salir
-          </a>
+          <a className="salir" role="button"  onClick={logout} href="/#/">Salir</a>
         </li>
       </ul>
     </div>
