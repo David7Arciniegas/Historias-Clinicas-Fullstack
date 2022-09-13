@@ -9,7 +9,7 @@ const LoadingScreen = () => {
           <img className="logo" src={Image} alt="" />
         </li>
         <li>
-          <a className="ingresar" href="/#/">
+          <a className="ingresar" href="/#/login">
             Ingresar
           </a>
         </li>
