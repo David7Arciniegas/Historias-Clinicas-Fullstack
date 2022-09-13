@@ -342,3 +342,15 @@ ul {
   align-items: center;
   text-align: center;
 }
+
+.warning{
+  padding-top: 2rem;
+  text-align: center;
+  margin: 2rem;
+  color: antiquewhite;
+}
+
+#texto{
+  display: flex;
+  justify-content: center;
+}

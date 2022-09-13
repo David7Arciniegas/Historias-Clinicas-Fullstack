@@ -1,8 +1,8 @@
-import axios from 'axios';
-import React from 'react';
-import { Button, Card, Form, Row, Col, Container } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React from "react";
+import { Button, Card, Form, Row, Col, Container } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
@@ -11,18 +11,20 @@ const Login = () => {
 
   const submit = (data) => {
     axios
+      .post(`${API_URL}/login`, data)
+      /* axios
     .post(
-      `${API_URL}/login`, data
-    )
+      `http://localhost:5000/api/v1/users/login`, data
+    )*/
       .then((res) => {
-        localStorage.setItem('token', res.data.token);
-        navigate('/');
-        alert('Bienvenido usuario');
+        localStorage.setItem("token", res.data.token);
+        navigate("/");
+        alert("Bienvenido usuario");
       })
       .catch((error) => {
         console.log(error.response.status);
         if (error.response.status === 404) {
-          alert('Su Historia no existe en la base de datos');
+          alert("Su Historia no existe en la base de datos");
         }
       });
   };
@@ -32,19 +34,26 @@ const Login = () => {
       <h3 className="main-title">
         Bienvenido al portal de búsqueda de historias clinicas de Medicoop
       </h3>
+      <p className="warning">
+        La historia clinica reciente, se encuentra en el aplicativo CIKLOS que
+        es propiedad de Coomeva EPS, para obtener una copia debe dirigirse a
+        Coomeva EPS liquidacion, sin embargo en nuestros archivos hay
+        documentacion de Historias Clinicas anterior al año 2006, si usted
+        necesita esa informacion la puede solicitar en esta pagina
+      </p>
       <br />
       <div className="background-picture"></div>
       <h4 className="main-title">
         Ingrese su Nombre y Cédula sin puntos ni comas.
       </h4>
       <br />
-      <Card style={{ maxWidth: '500px' }} className="mx-auto">
+      <Card style={{ maxWidth: "500px" }} className="mx-auto">
         <Card.Body className="card-body">
           <Form onSubmit={handleSubmit(submit)}>
             <Form.Group className="mb-3">
               <Form.Label>Nombres y Apellidos</Form.Label>
               <Form.Control
-                {...register('name')}
+                {...register("name")}
                 type="name"
                 placeholder="Ingrese su Nombre"
               />
@@ -56,7 +65,7 @@ const Login = () => {
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Cedula de Ciudadania</Form.Label>
               <Form.Control
-                {...register('identification')}
+                {...register("identification")}
                 type="password"
                 placeholder="Ingrese su Cédula sin puntos ni comas"
               />
@@ -109,11 +118,11 @@ const Login = () => {
                         <h1>3.</h1>
                         <article>
                           Si no aparece en la base de datos, o hay algun error
-                          por favor comuniquese al numero 314-6454871 o al
+                          por favor comuniquese al
                           correo electronico
                           <a href="mailto:historiasclinicasmedicoop@gmail.com">
-                            {' '}
-                            historiasclinicasmedicoop@gmail
+                            {" "}
+                            historiasclinicasmedicoop@gmail.com
                           </a>
                         </article>
                       </div>
@@ -137,7 +146,7 @@ const Login = () => {
         </Col>
         <footer>
           <div className="footer">
-            © 2022 Copyright: Medicoop I.P.S. - all Rights Reserved
+            © 2022 Copyright: Medicoop I.P.S. - All Rights Reserved
           </div>
         </footer>
       </Row>

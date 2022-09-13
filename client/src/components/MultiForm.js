@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import '../App.css';
-import getConfig from '../utils/getConfig';
+import React, { Component } from "react";
+import axios from "axios";
+import "../App.css";
+import getConfig from "../utils/getConfig";
 
 class MultiForm extends Component {
   state = {
-    name: '',
-    identification: '',
-    email: '',
-    phoneNumber: '',
+    name: "",
+    identification: "",
+    email: "",
+    phoneNumber: "",
     selectedFile: null,
-    filename: '',
+    filename: "",
   };
 
   handleChange = (event) => {
     this.setState({
-      name: document.getElementById('name').value,
-      identification: document.getElementById('identification').value,
-      email: document.getElementById('email').value,
-      phoneNumber: document.getElementById('phoneNumber').value,
+      name: document.getElementById("name").value,
+      identification: document.getElementById("identification").value,
+      email: document.getElementById("email").value,
+      phoneNumber: document.getElementById("phoneNumber").value,
     });
   };
 
@@ -26,7 +26,7 @@ class MultiForm extends Component {
     //let file = event.target.files[0].name;
     this.setState({
       selectedFile: event.target.files[0],
-      filename: document.getElementById('file').value,
+      filename: document.getElementById("file").value,
     });
   };
 
@@ -35,20 +35,25 @@ class MultiForm extends Component {
 
     let formData = new FormData();
 
-    formData.append('name', this.state.name);
-    formData.append('identification', this.state.identification);
-    formData.append('email', this.state.email);
-    formData.append('phoneNumber', this.state.phoneNumber);
-    formData.append('requestImg', this.state.filename);
-    formData.append('requestImg', this.state.selectedFile);
+    formData.append("name", this.state.name);
+    formData.append("identification", this.state.identification);
+    formData.append("email", this.state.email);
+    formData.append("phoneNumber", this.state.phoneNumber);
+    formData.append("requestImg", this.state.filename);
+    formData.append("requestImg", this.state.selectedFile);
 
     const API_URL = `${process.env.REACT_APP_API_URL}api/v1`;
 
-    axios.post(`${API_URL}/request`, formData, getConfig() )
-      .then((res) => {
-        alert("Su solicitud ha sido enviada, pronto nos pondremos en contacto")
-      });
+    axios.post(`${API_URL}/request`, formData, getConfig()).then((res) => {
+      alert("Su solicitud ha sido enviada, pronto nos pondremos en contacto");
+    });
   };
+
+  /* axios.post(`http://localhost:5000/api/v1/request`, formData, getConfig() )
+  .then((res) => {
+    alert("Su solicitud ha sido enviada, pronto nos pondremos en contacto")
+  });
+};*/
 
   render() {
     return (
@@ -91,7 +96,7 @@ class MultiForm extends Component {
           />
 
           <div id="div_file">
-            <p id="texto">Seleccionar Archivo .pdf</p>
+            <p id="texto">Seleccionar Archivo</p>
             <input
               type="file"
               name="requestImg"
@@ -106,7 +111,7 @@ class MultiForm extends Component {
             type="submit"
             onClick={this.fileUploadHandler}
           >
-            Enviar
+            Enviar Solicitud
           </button>
         </form>
       </div>
